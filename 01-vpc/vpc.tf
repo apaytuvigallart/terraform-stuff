@@ -11,7 +11,6 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
 resource "aws_vpc" "demo_vpc" {
   cidr_block = "10.0.0.0/16"
   tags = {
@@ -19,7 +18,6 @@ resource "aws_vpc" "demo_vpc" {
   }
 }
 
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 resource "aws_subnet" "public_subnet" {
   vpc_id     = aws_vpc.demo_vpc.id
   cidr_block = "10.0.0.0/24"
@@ -36,7 +34,6 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.demo_vpc.id
 
@@ -45,7 +42,6 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
 resource "aws_route_table" "public_rtb" {
   vpc_id = aws_vpc.demo_vpc.id
 
@@ -55,7 +51,6 @@ resource "aws_route_table" "public_rtb" {
   }
 }
 
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association
 resource "aws_route_table_association" "public_subnet" {
   subnet_id      = aws_subnet.public_subnet.id
   route_table_id = aws_route_table.public_rtb.id
