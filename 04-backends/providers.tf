@@ -13,7 +13,6 @@ terraform {
   backend "s3" {
     bucket = "my-test-bucket-terraform-123"
     region = "us-east-1"
-    key    = "04-backends/state.tfstate"
   }
 }
 
