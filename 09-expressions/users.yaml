@@ -1,0 +1,5 @@
+users:
+- name: Aleix
+  group: admin
+- name: John
+  group: developer
